@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <?php include '../pagination.php'; ?>
-                    <h1 style="font-size: 20px">Exercice 4 : Afficher les 20 premiers clients</h1>
+                    <h1 style="font-size: 20px">Exercice 4 : N'afficher que les clients possédant une carte de fidélité.</h1>
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -20,7 +20,6 @@
                                 <th>Nom</th>
                                 <th>Prénom</th>
                                 <th>Date de naissance</th>
-                                <th>Age</th>
                                 <th>Carte</th>
                                 <th>Numéro de carte</th>
                             </tr>
@@ -32,7 +31,6 @@
                                     <td><?= $clients->lastName; ?></td>
                                     <td><?= $clients->firstName; ?></td>
                                     <td><?= $clients->birthDate; ?></td>
-                                    <td><?= $clients->age; ?></td>
                                     <td><?= $clients->card; ?></td>
                                     <td><?= $clients->cardNumber; ?></td>
                                 </tr>

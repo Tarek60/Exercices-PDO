@@ -1,6 +1,6 @@
 <?php
 // Je crée une variable query dans laquelle je mets ma requête SQL
-$query = 'SELECT id, title, performer, date, showTypesId, startTime FROM shows ORDER BY title ASC';
+$query = 'SELECT id, title, performer, DATE_FORMAT(`date`, "%d/%m/%Y) AS `date`, showTypesId, startTime FROM shows ORDER BY title ASC';
 // On fait un try catch pour être sûr que la connexion à mysql se fasse
 try {
     // On instancie un objet PDO. Le host est l'adresse locale sur laquelle on se connecte. dbname correspond au nom de la base de données.
