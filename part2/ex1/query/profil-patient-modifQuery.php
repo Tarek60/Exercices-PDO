@@ -1,10 +1,6 @@
 <?php
 
-try {
-    $bdd = new PDO('mysql:host=127.0.0.1;dbname=HospitalE2N;charset=utf8', 'usr_pdopartie2', 'pdopartie2');
-} catch (Exception $ex) {
-    die('Erreur : ' . $ex->getMessage());
-}
+include 'connexionQuery.php';
 
 if (isset($_GET['id'])) {
     $query = 'SELECT id, lastname, firstname, birthdate, phone, mail FROM patients WHERE id = :id';

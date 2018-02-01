@@ -16,7 +16,6 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Titre du spectacle</th>
                                 <th>Artiste</th>
                                 <th>Date du spectacle</th>
@@ -26,7 +25,6 @@
                         <tbody>
                             <?php foreach ($showsList AS $shows) { ?>
                                 <tr>
-                                    <td><?= $shows->id ?></td>
                                     <td><?= $shows->title ?></td>
                                     <td><?= $shows->performer ?></td> 
                                     <td><?= $shows->date ?></td>

@@ -16,19 +16,13 @@
                     <?php foreach ($clientsList AS $clients) { ?>
                         <div class="well">
                             <p><strong>Nom : </strong><?= $clients->lastName; ?></p>
-                            <p><strong>Prénom : </strong><?= $clients->firstName; ?></br>
-                            <p><strong>Date de naissance : </strong><?= $clients->birthDate; ?></br>
-                            <p><strong>Carte de fidélité : </strong><?php
-                                if ($clients->card == 1) {
-                                    echo 'Oui';
-                                } else {
-                                    echo 'Non';
-                                }
-                                ?></p>
-                            <?php if ($clients->cardNumber == true) { ?>
+                            <p><strong>Prénom : </strong><?= $clients->firstName; ?></p>
+                            <p><strong>Date de naissance : </strong><?= $clients->birthDate; ?></p>
+                            <p><strong>Carte de fidélité : </strong><?= $clients->card; ?></p>
+                            <?php if ($clients->cardNumber != NULL) {
+                                ?>
                                 <p><strong>Numéro de carte : </strong><?= $clients->cardNumber; ?></p>
-                                <?php
-                            }
+                            <?php }
                             ?>
                         </div>
                         <?php

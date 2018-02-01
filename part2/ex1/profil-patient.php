@@ -1,4 +1,4 @@
-<?php include 'profil-patientQuery.php'; ?>
+<?php include 'query/profil-patientQuery.php'; ?>
 <?php include 'header.php'; ?>
 <div class="container">
     <div class="row">
@@ -28,6 +28,7 @@
                             <h2>Adresse e-mail : </h2>
                             <p><?= $patientList->mail; ?></p>
                             <hr align="left">
+                            <a href="profil-patient-modif.php?id=<?= $patientList->id; ?>" class="btn btn-default">Modifier</a>
                         </div>
                     </div>
                 </div>

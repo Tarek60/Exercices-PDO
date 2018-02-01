@@ -1,6 +1,6 @@
 <?php
 // Je crée une variable query dans laquelle je mets ma requête SQL
-$query = 'SELECT `id`, `lastName`, `firstName`, DATE_FORMAT(`birthDate`, "%d/%m/%Y") AS `birthDate`,FLOOR( DATEDIFF( NOW(), `birthDate` ) / 365) AS `age`, `card`, `cardNumber` FROM `clients`';
+$query = 'SELECT `lastName`, `firstName`, DATE_FORMAT(`birthDate`, "%d/%m/%Y") AS `birthDate`,FLOOR( DATEDIFF( NOW(), `birthDate` ) / 365) AS `age`, CASE WHEN `card` = 1 THEN \'Oui\' ELSE \'Non\' END AS `card`, `cardNumber` FROM `clients`';
 // On fait un try catch pour être sûr que la connexion à mysql se fasse
 try {
     // On instancie un objet PDO. Le host est l'adresse locale sur laquelle on se connecte. dbname correspond au nom de la base de données.

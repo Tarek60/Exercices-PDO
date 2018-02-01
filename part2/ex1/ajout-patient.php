@@ -1,4 +1,4 @@
-<?php include 'ajout-patientQuery.php'; ?>
+<?php include 'query/ajout-patientQuery.php'; ?>
 <?php include 'header.php'; ?>
 <?php
 // Si le formulaire est rempli, on envoie les informations dans la base de données
@@ -51,7 +51,7 @@ if (!empty($_POST['lastName']) && !empty($_POST['firstName']) && !empty($_POST['
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="birthDate" id="email"  placeholder="Entrer votre date de naissance"/>
+                                <input type="date" class="form-control" name="birthDate" id="email"  placeholder="Entrer votre date de naissance"/>
                             </div>
                         </div>
                     </div>

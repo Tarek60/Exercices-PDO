@@ -1,5 +1,9 @@
-<?php include 'query/liste-patientsQuery.php'; ?>
-<?php include 'header.php'; ?>
+<?php
+include 'models/dataBase.php';
+include 'models/patients.php';
+include 'controllers/liste-patientsController.php';
+include 'header.php';
+?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -9,7 +13,7 @@
                     <!-- On récupère les valeur des colonnes de la table patient en parcourant le tableau $patientList, pour les afficher dans la liste  -->
                     <?php foreach ($patientsList as $patients) {
                         ?>
-                    <a href="profil-patient.php?id=<?= $patients->id; ?>" class="list-group-item list-group-item-action"><?= $patients->lastname . ' ' . $patients->firstname; ?></a>
+                    <a href="profil-patient.php?patientId=<?= $patients->id; ?>" class="list-group-item list-group-item-action"><?= $patients->lastname . ' ' . $patients->firstname; ?></a>
                     <?php }
                     ?>
                 </div>
