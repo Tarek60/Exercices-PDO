@@ -1,8 +1,9 @@
 <?php
-include 'models/dataBase.php';
-include 'models/patients.php';
-include 'controllers/profil-patientController.php';
-include 'header.php';
+include_once 'models/dataBase.php';
+include_once 'models/patients.php';
+include_once 'models/appointments.php';
+include_once 'controllers/profil-patientController.php';
+include_once 'header.php';
 ?>
 <div class="container">
     <div class="row">
@@ -20,9 +21,9 @@ include 'header.php';
                                 ?> 
                                 <h1>Informations du patient</h1>
                                 <?php foreach ($errors as $error) { ?>
-                                <p><?= $error ?><br></p>
+                                    <p><?= $error ?><br></p>
                                 <?php } ?>
-                                <form action="profil-patient.php?patientId=<?= $_GET['patientId'] ?>" method="post">
+                                <form action="profil-patient.php?patientId=<?= $patient->id ?>" method="post">
                                     <h2>Nom : </h2>
                                     <input type="text" name="lastname" value="<?= $patient->lastname ?>" />
                                     <hr align="left">
@@ -41,7 +42,29 @@ include 'header.php';
                                     <input type="submit" name="submit" value="Enregistrer les modifications" />
                                 </form>
                             <?php } else { ?>
-                                <p>Le patient n'a pas été trouvé.</p><?php } ?>
+                                <p>Le patient n'a pas été trouvé.</p>
+                            <?php } ?>
+                            <h1>Liste des rendez-vous</h1>
+                            <table border="2" class="rdvList table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Heure</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($listInfoAppointments as $appointmentsPatient) {
+                                        ?>
+                                        <tr>
+                                            <td><?= $appointmentsPatient->date; ?></td>
+                                            <td><?= $appointmentsPatient->hour; ?></td>
+                                            <td><a class="btn btn-secondary" href="rendezvous.php?appointmentId=<?= $appointmentsPatient->id; ?>">Voir / Modifier ce RDV</a></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -50,19 +73,3 @@ include 'header.php';
     </div>
 </div>
 <?php include 'footer.php'; ?>
-<!-- <h2>Nom : </h2>
-<p></p>
-<hr align="left">
-<h2>Prénom : </h2>
-<p></p>
-<hr align="left">
-<h2>Date de naissance : </h2>
-<p></p>
-<hr align="left">
-<h2>Numéro de téléphone : </h2>
-<p></p>
-<hr align="left">
-<h2>Adresse e-mail : </h2>
-<p></p>
-<hr align="left">
-<a href="modif-patient.php?patientId=" class="btn btn-default">Modifier</a> -->

@@ -1,18 +1,43 @@
 <?php
-class appointments {
-    public $id = 0;
-    public $dateHours = '01/01/1900 00:00';
-    public $idPatients = 0;
+
+class appointments extends dataBase {
+
+    public $id;
+    public $dateHour;
+    public $idPatients;
+
     public function __construct() {
-        //connexion a la bdd
-        try {
-            $db = new PDO('mysql:host=localhost;dbname=HospitalE2N;charset=utf8', 'usr_pdopartie2', 'pdopartie2');
-            //message si il y a une erreur lors de la connexion a la bdd
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+        parent::__construct();
+    }
+
+    /**
+     * Fonction qui perrmet de rentrer un rendez vous dans la base
+     * @return 
+     */
+    public function addAppointment() {
+        $query = $this->db->prepare('INSERT INTO `appointments` (`dateHour`, `idPatients`) VALUES (:dateHour, :idPatients)');
+        $query->bindValue(':dateHour', $this->dateHour, PDO::PARAM_STR);
+        $query->bindValue(':idPatients', $this->idPatients, PDO::PARAM_INT);
+        return $query->execute();
+    }
+
+    /**
+     * Permet de savoir si l'heure et la date demandé dans le formulaire
+     * est bien disponible.
+     * @return boolean
+     */
+    
+    public function checkFreeAppointment() {
+        $query = 'SELECT COUNT(*) AS `takenAppointment` FROM `appointments` WHERE `dateHour` = :dateHour AND `idPatients` = :idPatients';
+        $freeAppointment = $this->db->prepare($query);
+        $freeAppointment->bindValue(':dateHour', $this->dateHour, PDO::PARAM_STR);
+        $freeAppointment->bindValue(':idPatients', $this->idPatients, PDO::PARAM_INT);
+        if ($freeAppointment->execute()){
+            $freeAppointmentCheck = $freeAppointment->fetch(PDO::FETCH_OBJ);
+        } else {
+            $freeAppointmentCheck = false;
         }
+        return $freeAppointmentCheck;
     }
-    public function __destruct() {   
-    }
+
 }
-?>

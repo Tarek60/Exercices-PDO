@@ -1,9 +1,9 @@
 <?php
-include 'models/dataBase.php';
-include 'models/patients.php';
-include 'models/appointments.php';
-include 'controllers/ajout-rendezvousController.php';
-include 'header.php';
+include_once 'models/dataBase.php';
+include_once 'models/patients.php';
+include_once 'models/appointments.php';
+include_once 'controllers/ajout-rendezvousController.php';
+include_once 'header.php';
 ?>
 <div class="container">
     <div class="row main">
@@ -11,11 +11,20 @@ include 'header.php';
             <h1>Ajouter un rendez-vous</h1>
             <form method="post" action="ajout-rendezvous.php">
                 <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Date et heure du rendez-vous</label>
+                    <label for="name" class="cols-sm-2 control-label">Date du rendez-vous</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-calendar-o fa" aria-hidden="true"></i></span>
-                            <input type="datetime" class="form-control" name="dateHour" id="name" />
+                            <input type="date" class="form-control" name="date" id="name" />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Heure du rendez-vous</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-clock-o fa" aria-hidden="true"></i></span>
+                            <input type="time" class="form-control" name="hour" id="name" />
                         </div>
                     </div>
                 </div>
@@ -23,8 +32,8 @@ include 'header.php';
                     <label for="name" class="cols-sm-2 control-label">Selection du patient</label>
                     <div class="cols-sm-10">
                         <select name="idPatients" style="color: black">
-                            <?php foreach ($patientsList as $patients) {
-                                ?> <option value="<?= $patients->id ?>"><?= $patients->lastname . ' ' . $patients->firstname ?></option>  
+                            <?php foreach ($patientsList as $patients) { ?>
+                                <option value="<?= $patients->id ?>"><?= $patients->lastname . ' ' . $patients->firstname ?></option>  
                             <?php } ?>
                         </select>
                     </div>

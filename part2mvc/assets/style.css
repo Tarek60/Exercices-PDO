@@ -191,7 +191,7 @@ span.input-group-addon i {
     font-size: 25px;
     font-weight: bold;
     margin-top: 30px;
-    margin-bottom: 45px;
+    margin-bottom: 25px;
 }
 
 .infoUser p {
@@ -229,4 +229,14 @@ span.input-group-addon i {
 }
 .formValid{
     color: #00EE00;
+}
+
+.table-rdv {
+    background-color: white;
+    text-align: center;
+}
+
+.table-rdv th {
+    border-color: black;
+    text-align: center;
 }

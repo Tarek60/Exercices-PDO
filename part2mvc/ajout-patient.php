@@ -1,8 +1,8 @@
 <?php
-include 'models/dataBase.php';
-include 'models/patients.php';
-include 'controllers/ajout-patientController.php';
-include 'header.php';
+include_once 'models/dataBase.php';
+include_once 'models/patients.php';
+include_once 'controllers/ajout-patientController.php';
+include_once 'header.php';
 ?>
 <div class="container">
     <div class="row main">

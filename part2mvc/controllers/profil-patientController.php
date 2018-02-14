@@ -1,15 +1,16 @@
 <?php
 
 $errors = array();
-// On instancie $patient qui devient un objet
 $patient = new patients();
 if (isset($_GET['patientId'])) {
     $patient->id = $_GET['patientId'];
+    $isFind = $patient->getPatientById();
 }
 
-$isFind = $patient->getPatientById();
+
 
 if (count($_POST) > 0) {
+
     if (!empty($_POST['lastname'])) {
         $patient->lastname = $_POST['lastname'];
     } else {
@@ -43,5 +44,15 @@ if (count($_POST) > 0) {
     if (count($errors) == 0) {
         $patient->updatePatient();
     }
+}
+//si l'id existe on le récupère pour afficher les infos du patient
+if (isset($_GET['patientId'])) {
+    $patients = new patients();
+    $patients->id = $_GET['patientId'];
+    //affichage de la liste des rendez-vous du patient sélectionné
+    $listAppointmentsPatient = new appointments();
+    $listAppointmentsPatient->idPatients = $patients->id;
+    $listInfoAppointments = $listAppointmentsPatient->listAppointmentsByIdPatient();
+    $patientInfo = $patient->getPatientById();
 }
 ?>

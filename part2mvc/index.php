@@ -5,11 +5,11 @@
             <div class="liens-pages">
                 <a href="ajout-patient.php" class="btn btn-sq-lg btn-default">
                     <i class="fa fa-user-plus fa-5x"></i><br>
-                    <p>Ajouter un patient</p>
+                    <p>Ajout patient</p>
                 </a>
                 <a href="liste-patients.php" class="btn btn-sq-lg btn-default">
                     <i class="fa fa-users fa-5x"></i><br/>
-                    <p>Liste des patients</p>
+                    <p>Liste patients</p>
                 </a>
                 <a href="ajout-rendezvous.php" class="btn btn-sq-lg btn-default">
                     <i class="fa fa-calendar-plus-o fa-5x"></i><br/>
